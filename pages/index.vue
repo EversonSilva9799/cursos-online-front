@@ -5,18 +5,28 @@
   <h1 class="titulo-home">Ferramentas do Sistema</h1>
 
   <ul class="container opcoes">
+
     <li class="item grid-4">
-      <nuxt-link to="/courses">Novo Curso</nuxt-link>
-      <i class="fa fa-plus" aria-hidden="true"></i>
+      <nuxt-link to="/courses">
+        <span>Novo Curso</span>
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </nuxt-link>
     </li>
+
     <li class="item grid-4">
-      <nuxt-link to="/categories">Nova Categoria</nuxt-link>
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      <nuxt-link to="/categories">
+        <span>Nova Categoria</span>
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      </nuxt-link>
     </li>
+
     <li class="item grid-4">
-      <nuxt-link to="/courses">Meus Cursos</nuxt-link>
-      <i class="fa fa-folder-open" aria-hidden="true"></i>
+      <nuxt-link to="/courses">
+        <span>Meus Cursos</span>
+        <i class="fa fa-folder-open" aria-hidden="true"></i>
+      </nuxt-link>
     </li>
+    
   </ul>
 
 </div>
@@ -31,7 +41,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
   .titulo-home {
 	text-align: center;
@@ -42,6 +52,7 @@ export default {
 	background-color: #33363a;
 	border-radius: 10px;
 	padding: 30px 0px;
+  margin-bottom: 130px;
 }
 
 .item {
@@ -56,8 +67,20 @@ export default {
 	margin-bottom: 10px;
 }
 
-.opcoes i {
+.item i {
 	font-size: 2em;
+  color: #000;
+  display: block;
+}
+
+
+@media only screen and (max-width: 980px) {
+    .grid-4 {
+      width: calc(100% - 20px);
+    }
+
+
+
 }
 
 </style>

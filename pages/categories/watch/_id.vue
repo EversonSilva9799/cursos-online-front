@@ -39,7 +39,7 @@ export default {
 
     async show() {
       try {
-        const res = await this.$axios.get('http://127.0.0.1:3333/categories/' + this.url);
+        const res = await this.$axios.get('categories/' + this.url);
         this.nameCategory = res.data.name;
         this.courses = res.data.courses;
 
@@ -60,7 +60,7 @@ export default {
     margin: 40px 0 40px 0;
   }
 
-  
+
 </style>
 
 

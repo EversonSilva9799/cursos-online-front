@@ -56,7 +56,7 @@ export default {
     async index() {
       try {
 
-        const res = await this.$axios.get('http://127.0.0.1:3333/categories')
+        const res = await this.$axios.get('categories')
         this.categories = res.data;
 
 
@@ -67,7 +67,9 @@ export default {
 
     async registerCategory() {
       try {
-        const res = await this.$axios.post('http://127.0.0.1:3333/categories', {"name": this.name, "description": this.descrption })
+        const res = await this.$axios.post('categories', {"name": this.name, "description": this.descrption })
+        this.name = '';
+        this.description = '';
         this.index();
 
       } catch(error) {

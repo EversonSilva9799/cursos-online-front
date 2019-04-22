@@ -4,7 +4,6 @@
       <h1 class="title-page">Meus Cursos</h1>
 
       <form  action="" @submit.prevent="registerCourse" method="post" class="form-create-course">
-          <!-- <label for="categoria">Categoria</label> -->
           <input type="text" name="name" id="course" placeholder="Curso" v-model="form.name">
           <textarea class="description" name="description" placeholder="Informe uma descrição para o curso" v-model="form.description"></textarea>
           <select name="" class="categories" v-model="form.category_id">
@@ -14,15 +13,14 @@
           <button name="acao">Criar</button>
       </form>
     </section>
+
     <section class="courses-category" >
           <cursoComponent :courses="courses"></cursoComponent>
-
-     </section>
+     </section>   <!--- Lista de cursos aqui -->
   </div>
 </template>
 
 <script>
-//import  from '~/components/cursoComponent';
 import cursoComponent from '~/components/cursoComponent';
 
 export default {
@@ -53,7 +51,7 @@ export default {
     async index() {
       try {
 
-        const res = await this.$axios.get('http://127.0.0.1:3333/courses')
+        const res = await this.$axios.get('courses')
         this.courses = res.data;
 
       } catch (error) {
@@ -63,7 +61,7 @@ export default {
 
     async getCategories() {
       try {
-        const res = await this.$axios.get('http://127.0.0.1:3333/categories');
+        const res = await this.$axios.get('categories');
         this.categories = res.data;
 
       } catch (error) {
@@ -75,8 +73,12 @@ export default {
 
     async registerCourse() {
       try {
-        const res = await this.$axios.post('http://127.0.0.1:3333/courses', this.form)
+        const res = await this.$axios.post('courses', this.form)
         this.index();
+
+        this.form.name = '';
+        this.form.description = '';
+        this.form.category_id = '';
 
       } catch(error) {
         console.log(error);

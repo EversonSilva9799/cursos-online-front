@@ -5,6 +5,8 @@ import webpack from 'webpack'
 export default {
   mode: 'universal',
 
+
+
   /*
   ** Headers of the page
   */
@@ -15,10 +17,24 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
+    script: [
+
+    ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+
     ]
   },
+
+  "scripts": {
+    "dev": "nuxt --hostname myhost --port 3333"
+  },
+
+  server: {
+    port: 8585, // default: 3000
+    host: '0.0.0.0', // default: localhost
+  },
+
 
   /*
   ** Customize the progress-bar color
@@ -30,7 +46,8 @@ export default {
   */
   css: [
     "~/assets/css/main.css",
-    "~/assets/css/font-awesome.css"
+    "~/assets/css/font-awesome.css",
+
   ],
 
   /*
@@ -52,6 +69,7 @@ export default {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseURL: 'http://192.168.0.100:8989/'
   },
 
   /*

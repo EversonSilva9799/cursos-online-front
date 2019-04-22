@@ -25,6 +25,9 @@ export default {
   props: {
     idCourse: {
       required: true
+    },
+    nameCourse: {
+      required: true
     }
   },
 
@@ -72,27 +75,33 @@ export default {
         /*
           Make the request to the POST /multiple-files URL
         */
-       //for (var value of formData.values()) {
-       try {
-         await this.$axios.post( `http://127.0.0.1:3333/courses/${this.idCourse}/videos`,
+      try {
+        const res = await this.$axios.post( `http://127.0.0.1:3333/courses/${this.idCourse}/videos`,
           formData,
           {
             headers: {
                 'Content-Type': 'multipart/form-data'
             },
+
             onUploadProgress: function( progressEvent ) {
               this.uploadPercentage = parseInt( Math.round( ( progressEvent.loaded * 100 ) / progressEvent.total ) );
             }.bind(this)
-          });
+          },
+
+
+          );
+
+          this.closeForm();
+          formData = [];
           this.$emit('newvideos');
 
-       }
+      }
 
-       catch (error) {
+      catch (error) {
          console.log(error);
-       }
+      }
 
-      },
+    },
 
       previewFiles() {
         this.files = this.$refs.myFiles.files;
